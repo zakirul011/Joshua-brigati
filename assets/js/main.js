@@ -64,69 +64,51 @@ themeBtns.forEach((btn) => {
   });
 });
 
-// NAV CONTROL INDECATOR
-const nav = document.querySelectorAll(".nav");
-nav.forEach((wrap) => {
-  let btns = wrap.querySelectorAll(".nav-link");
-  let indecator = wrap.querySelector(".nav-indecator");
-  let w;
-
-  indecator.style.height = btns[0].offsetHeight + "px";
-
-  btns.forEach((btn) => {
-    moveIndecator(btn);
-
-    btn.addEventListener("click", () => {
-      for (let i = 0; i < btns.length; i++) {
-        btns[i].classList.remove("selected");
-      }
-      btn.classList.add("selected");
-      moveIndecator(btn);
-    });
-  });
-
-  function moveIndecator(btn) {
-    if (btn.classList.contains("selected")) {
-      w = btn.offsetWidth;
-
-      indecator.style.width = w + "px";
-      indecator.style.left = btn.offsetLeft + "px";
-    }
-  }
-});
-
 // ISOTOP FILTER
 // Function to change the custom order of a specific item
 function changeItemOrder(itemSelector, newOrder) {
   $(itemSelector).attr("data-order", newOrder);
 }
 
-function gridResPos() {
-  $(".grid-item").each(function (i) {
-    $(this).attr("data-order", i + 1);
+$(window).on("load", function () {
+  // NAV CONTROL INDECATOR
+  const nav = document.querySelectorAll(".nav");
+  nav.forEach((wrap) => {
+    let btns = wrap.querySelectorAll(".nav-link");
+    let indecator = wrap.querySelector(".nav-indecator");
+
+    btns.forEach((btn) => {
+      moveIndecator(btn);
+
+      btn.addEventListener("click", () => {
+        for (let i = 0; i < btns.length; i++) {
+          btns[i].classList.remove("selected");
+        }
+        btn.classList.add("selected");
+        moveIndecator(btn);
+      });
+    });
+
+    function moveIndecator(btn) {
+      if (btn.classList.contains("selected")) {
+        indecator.style.height = btn.offsetHeight + "px";
+        indecator.style.width = btn.offsetWidth + "px";
+        indecator.style.left = btn.offsetLeft + "px";
+      }
+    }
+
+    let adjustIndecator;
+    $(window).on("resize", function () {
+      clearTimeout(adjustIndecator);
+      adjustIndecator = setTimeout(() => {
+        btns.forEach((btn) => {
+          moveIndecator(btn);
+        });
+      }, 350);
+    });
   });
 
-  if (
-    window.matchMedia("(min-width: 768px) and (max-width: 991.98px)").matches //md
-  ) {
-    changeItemOrder(".grid-item-6", 11);
-    changeItemOrder(".grid-item-7", 11);
-  } else if (
-    window.matchMedia("(min-width: 992px) and (max-width: 1199.98px)").matches //lg
-  ) {
-    changeItemOrder(".grid-item-6", 11);
-    changeItemOrder(".grid-item-7", 11);
-  } else if (window.matchMedia("(max-width: 767.98px)").matches) {
-    //sm
-    changeItemOrder(".grid-item-8", 4);
-    changeItemOrder(".grid-item-9", 4);
-    changeItemOrder(".grid-item-10", 4);
-  }
-}
-
-$(window).on("load", function () {
-  gridResPos();
-
+  // ISOTOPE INIT
   var $grid = $(".grid").isotope({
     itemSelector: ".grid-item",
     layoutMode: "packery",
@@ -152,11 +134,33 @@ $(window).on("load", function () {
     },
   });
 
-  // filter items on button click
-  $(".filters").on("click", "button", function () {
-    $(".filters .selected").removeClass("selected");
-    $(this).addClass("selected");
+  // RESPONSIVE GRID
+  function gridResPos() {
+    $(".grid-item").each(function (i) {
+      $(this).attr("data-order", i + 1);
+    });
 
+    if (
+      window.matchMedia("(min-width: 768px) and (max-width: 991.98px)").matches //md
+    ) {
+      changeItemOrder(".grid-item-6", 11);
+      changeItemOrder(".grid-item-7", 11);
+    } else if (
+      window.matchMedia("(min-width: 992px) and (max-width: 1199.98px)").matches //lg
+    ) {
+      changeItemOrder(".grid-item-6", 11);
+      changeItemOrder(".grid-item-7", 11);
+    } else if (window.matchMedia("(max-width: 767.98px)").matches) {
+      //sm
+      changeItemOrder(".grid-item-8", 4);
+      changeItemOrder(".grid-item-9", 4);
+      changeItemOrder(".grid-item-10", 4);
+    }
+  }
+
+  // GRID WHEN FILTERED
+  function gridAlignment() {
+    let selectedBtn = $(".filters .selected");
     gridResPos();
 
     $(".grid-item").each(function () {
@@ -167,7 +171,7 @@ $(window).on("load", function () {
 
     if (window.matchMedia("(min-width: 1200px)").matches) {
       //xl
-      if ($(this).text() == "About") {
+      if (selectedBtn.text() == "About") {
         $(".grid-item-3").css("width", "30%");
         $(".grid-item-9").css("width", "15%");
         $(".grid-item-6").css("width", "60%");
@@ -181,7 +185,7 @@ $(window).on("load", function () {
         changeItemOrder(".grid-item-6", 10);
         changeItemOrder(".grid-item-2", 11);
         changeItemOrder(".grid-item-4", 12);
-      } else if ($(this).text() == "Work") {
+      } else if (selectedBtn.text() == "Work") {
         $(".grid-item-4").css("width", "50%");
         $(".grid-item-1").css("width", "50%");
         $(".grid-item-2").css("width", "50%");
@@ -198,32 +202,44 @@ $(window).on("load", function () {
     } else if (
       window.matchMedia("(min-width: 992px) and (max-width: 1199.98px)").matches //lg
     ) {
-      if ($(this).text() == "About") {
+      if (selectedBtn.text() == "About") {
         changeItemOrder(".grid-item-4", 2);
       }
     } else if (
       window.matchMedia("(min-width: 768px) and (max-width: 991.98px)").matches //md
     ) {
-      if ($(this).text() == "About") {
+      if (selectedBtn.text() == "About") {
         changeItemOrder(".grid-item-4", 2);
       }
     } else if (
       window.matchMedia("(max-width: 767.98px)").matches //sm
     ) {
-      if ($(this).text() == "About") {
+      if (selectedBtn.text() == "About") {
         changeItemOrder(".grid-item-4", 2);
       }
     }
 
     $grid.isotope("updateSortData").isotope();
+  }
+
+  // ACTIVE GRIDs
+  gridResPos();
+  gridAlignment();
+
+  // filter items on button click
+  $(".filters").on("click", "button", function () {
+    $(".filters .selected").removeClass("selected");
+    $(this).addClass("selected");
+
+    gridAlignment();
   });
 
+  // ADJUST GRID WHEN RESIZING
   let adjustgrid;
   $(window).on("resize", function () {
     clearTimeout(adjustgrid);
     adjustgrid = setTimeout(() => {
-      gridResPos();
-      $grid.isotope("updateSortData").isotope();
+      gridAlignment();
     }, 350);
   });
 });
