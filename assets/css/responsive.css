@@ -1,0 +1,158 @@
+/*==========> XS + SM : < 768px (MOBILE) ==========*/
+@media (max-width: 767.98px) {
+  /* GLOBAL */
+  h1 {
+    font-size: 28px;
+  }
+  h2 {
+    font-size: 22px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+  h4 {
+    font-size: 16px;
+  }
+  h5 {
+    font-size: 14px;
+  }
+  h6 {
+    font-size: 12px;
+  }
+  body {
+    font-size: 12px;
+  }
+  /* GLOBAL// */
+
+  /* HEADER AREA */
+  .logo img {
+    max-width: 80px;
+  }
+  /* HEADER AREA// */
+
+  .grid-item {
+    width: 100%;
+  }
+  .grid-width-15 {
+    width: 50%;
+  }
+  .grid-width-25 {
+    width: 100%;
+  }
+  .grid-width-35.grid-item-9 {
+    width: 50%;
+  }
+  .grid-width-35 {
+    width: 100%;
+  }
+  .grid-width-40 {
+    width: 100%;
+  }
+  .grid-width-60 {
+    width: 100%;
+  }
+
+  .nav {
+    --bs-nav-link-padding-y: 0.4rem;
+  }
+}
+
+/*==========> XS + SM + MD : < 991px ==========*/
+@media (max-width: 991.98px) {
+}
+
+/*========== MD + LG + XL : 768px TO < 1400px (MIDDLE) ==========*/
+@media (min-width: 768px) and (max-width: 1399.98px) {
+}
+
+/*==========> MD : 768px TO < 991px ==========*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* GLOBAL */
+  h1 {
+    font-size: 30px;
+  }
+  h4 {
+    font-size: 14px;
+  }
+  .container {
+    max-width: 750px;
+  }
+  /* GLOBAL// */
+
+  .grid-width-15 {
+    width: 25%;
+  }
+  .grid-width-25 {
+    width: 50%;
+  }
+  .grid-width-35 {
+    width: 50%;
+  }
+  .grid-width-40 {
+    width: 50%;
+  }
+  .grid-width-60 {
+    width: 50%;
+  }
+
+  .grid-item-9 {
+    width: 25%;
+  }
+  /* .grid-item-7 {
+    width: 100%;
+  } */
+
+  .map {
+    height: 16.7em;
+  }
+}
+
+/*==========> LG : 992px TO < 1200px. ==========*/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  /* GLOBAL */
+  .container {
+    max-width: 920px;
+  }
+  /* GLOBAL// */
+
+  .grid-width-15 {
+    width: 25%;
+  }
+  .grid-width-25 {
+    width: 50%;
+  }
+  .grid-width-35 {
+    width: 50%;
+  }
+  .grid-width-40 {
+    width: 50%;
+  }
+  .grid-width-60 {
+    width: 50%;
+  }
+  .grid-item-7 {
+    width: 50%;
+  }
+
+  .grid-item-9 {
+    width: 25%;
+  }
+}
+
+/*==========> XL : 1200px TO < 1400px ==========*/
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+  /* GLOBAL */
+  .container {
+    max-width: 1200px;
+  }
+  /* GLOBAL// */
+}
+
+/*==========> SM : 576px TO < 768px ==========*/
+@media (min-width: 576px) and (max-width: 767.98px) {
+  /* GLOBAL */
+  .container {
+    max-width: 450px;
+  }
+  /* GLOBAL// */
+}
