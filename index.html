@@ -288,6 +288,60 @@
                   </div>
                </div>
 
+               <div class="grid-item grid-about grid-width-50 grid-item-17">
+                  <!-- card -->
+                  <div class="card contact-form">
+                     <button class="close">
+                        <i class="lottie-icon" data-src="./assets/img/icon/close.json">
+                        </i>
+                     </button>
+
+                     <!-- card bg -->
+                     <div class="blue-shine position-absolute z-n1 pointer-events-none inset-0"
+                        style="background-image: radial-gradient(circle at 50% 150%, rgba(32, 141, 229, 0.17), transparent);">
+                     </div>
+
+                     <div class="overlay position-absolute z-n1 pointer-events-none inset-1"></div>
+
+                     <div class="shine position-absolute z-n1 pointer-events-none inset-1"></div>
+                     <!-- card bg -->
+
+                     <div class="card-body p-4-plus">
+                        <h3 class="text-uppercase text-white">Contact form</h3>
+                        <form action="#">
+                           <div class="row g-3">
+                              <div class="col-md-6">
+                                 <label for="fName" class="form-label">First Name</label>
+                                 <input type="email" class="form-control" id="fName">
+                              </div>
+                              <div class="col-md-6">
+                                 <label for="Lname" class="form-label">Last Name</label>
+                                 <input type="email" class="form-control" id="Lname">
+                              </div>
+                              <div class="col-md-6">
+                                 <label for="inputTel" class="form-label">Phone</label>
+                                 <input type="tel" class="form-control" id="inputTel">
+                              </div>
+                              <div class="col-md-6">
+                                 <label for="inputEmail" class="form-label">Email</label>
+                                 <input type="email" class="form-control" id="inputEmail">
+                              </div>
+                              <div class="col-md-12">
+                                 <label for="inputText" class="form-label">Message</label>
+                                 <textarea class="form-control" id="inputText" rows="3"></textarea>
+                              </div>
+                              <div class="col-md-12">
+                                 <div class="h-captcha" data-sitekey="your_site_key"></div>
+                              </div>
+                              <div class="col-md-12">
+                                 <button type="submit" class="btn btn-primary w-100">Submit</button>
+                              </div>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+
                <div class="grid-item grid-about grid-width-15 grid-item-5">
                   <!-- card -->
                   <div class="card social">
@@ -540,7 +594,7 @@
 
                <div class="grid-item grid-about grid-width-35 grid-item-9">
                   <!-- card -->
-                  <div class="card social">
+                  <button class="envelope-btn card social w-100">
 
                      <!-- card bg -->
                      <div class="blue-shine position-absolute z-n1 pointer-events-none inset-0"
@@ -553,12 +607,10 @@
                      <!-- card bg -->
 
                      <div class="card-body d-flex align-items-center justify-content-center">
-                        <a href="#">
-                           <img class="img-light" src="./assets/img/email.svg" alt="">
-                           <img class="img-dark" src="./assets/img/email-dark.svg" alt="">
-                        </a>
+                        <img class="img-light" src="./assets/img/email.svg" alt="">
+                        <img class="img-dark" src="./assets/img/email-dark.svg" alt="">
                      </div>
-                  </div>
+                  </button>
                </div>
 
                <div class="grid-item grid-about grid-width-15 grid-item-10">
@@ -940,6 +992,7 @@
    <script src="./assets/js/isotope.pkgd.min.js"></script>
    <script src="./assets/js/packery-mode.pkgd.min.js"></script>
    <script src="./assets/js/gsap.min.js"></script>
+   <script src="https://js.hcaptcha.com/1/api.js" async></script>
 
    <!--======== CUSTOM JS ========-->
    <script src="./assets/js/main.js"></script>

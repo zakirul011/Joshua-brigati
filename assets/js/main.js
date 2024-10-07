@@ -181,10 +181,11 @@ $(window).on("load", function () {
         $(".grid-item-6 h6").css("padding-top", "1.5em");
 
         // Adjust the position of a specific item
-        changeItemOrder(".grid-item-3", 9);
+        changeItemOrder(".grid-item-3", 10);
         changeItemOrder(".grid-item-6", 10);
         changeItemOrder(".grid-item-2", 11);
         changeItemOrder(".grid-item-4", 12);
+        changeItemOrder(".grid-item-17", 10);
       } else if (selectedBtn.text() == "Work") {
         $(".grid-item-4").css("width", "50%");
         $(".grid-item-1").css("width", "50%");
@@ -196,8 +197,9 @@ $(window).on("load", function () {
         $(".grid-item-3 .map").css("height", "20em");
         $(".grid-item-6 h6").css("padding-top", "1.2em");
 
-        changeItemOrder(".grid-item-4", 8);
-        changeItemOrder(".grid-item-6", 9);
+        changeItemOrder(".grid-item-4", 9);
+        changeItemOrder(".grid-item-6", 10);
+        changeItemOrder(".grid-item-17", 12);
       }
     } else if (
       window.matchMedia("(min-width: 992px) and (max-width: 1199.98px)").matches //lg
@@ -241,6 +243,22 @@ $(window).on("load", function () {
     adjustgrid = setTimeout(() => {
       gridAlignment();
     }, 350);
+  });
+
+  // CONTACT FORM
+  const gridWrapper = document.querySelectorAll(".grid");
+  gridWrapper.forEach((wrap) => {
+    let envelopeBtn = wrap.querySelector(".envelope-btn");
+    let close = wrap.querySelector(".contact-form .close");
+
+    envelopeBtn.addEventListener("click", () => {
+      wrap.classList.add("contact-grid");
+      $grid.isotope("updateSortData").isotope();
+    });
+    close.addEventListener("click", () => {
+      wrap.classList.remove("contact-grid");
+      $grid.isotope("updateSortData").isotope();
+    });
   });
 });
 

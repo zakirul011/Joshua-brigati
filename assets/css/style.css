@@ -456,6 +456,37 @@ body.loaded .card {
   opacity: 1;
   transform: translateY(0);
 }
+.contact-form .close {
+  position: absolute;
+  right: 0.5em;
+  top: 0.5em;
+}
+.contact-form .close svg path {
+  stroke: #fff;
+}
+[data-bs-theme="light"] .contact-form .close svg path {
+  stroke: #000;
+}
+.form-control:focus {
+  border-color: #fff;
+  box-shadow: 0 0;
+}
+[data-bs-theme="light"] .form-control:focus {
+  border-color: #000;
+}
+.grid-item-17 {
+  display: none;
+}
+.contact-grid .grid-item-17 {
+  display: block;
+}
+.contact-grid .grid-item-5,
+.contact-grid .grid-item-6,
+.contact-grid .grid-item-8,
+.contact-grid .grid-item-9,
+.contact-grid .grid-item-10 {
+  display: none;
+}
 
 /* change mode to light */
 [data-bs-theme="light"] {
